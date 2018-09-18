@@ -1,0 +1,12 @@
+digraph fsm_attacking {
+    rankdir=LR;
+    size="8,5"
+		splines=true
+		overlap=scalexy;
+		fontsize=6
+    node [shape = circle label = "ATTACKING" ]; A
+		node [shape = circle label = "IDLE"  ]; NA
+		A -> A [ label = "Attack Timer" ]
+		A -> NA [ label = "Timer finishes" ]
+		NA -> A [ label = "Attack key" ]
+}

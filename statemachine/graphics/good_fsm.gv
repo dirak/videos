@@ -1,0 +1,14 @@
+digraph fsm_jumping {
+    rankdir=LR;
+    size="8,5"
+		splines=true
+		overlap=scalexy;
+    node [shape = circle label = "STANDING" ]; S
+		node [shape = circle label = "FALLING"  ]; F
+		node [shape = circle label = "JUMPING"  ]; J
+		S -> J [ label = "Jump key" ]
+		S -> F [ label = "Walk off ledge" ]
+		F -> S [ label = "Hit ground" ]
+		J -> F [ label = "Gravity" ]
+		F -> F
+}

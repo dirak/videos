@@ -8,8 +8,6 @@ var  stateMachine = {
 			if(cursors.up.isDown) {
 				player.setVelocityY(-360)
 				stateMachine.current_state = stateMachine.states.JUMPING
-			}else if(cursors.attack.isDown) {
-				stateMachine.current_state = stateMachine.states.ATTACKING
 			}
 		},
 		FALLING: (player, cursors) => {
@@ -27,11 +25,6 @@ var  stateMachine = {
 				stateMachine.current_state = stateMachine.states.FALLING
 			}
 		},
-		ATTACKING: (player, cursors) => {
-			/* do attack stuff */
-			player.tint = 0xff00ff
-			stateMachine.current_state = stateMachine.states.STANDING
-		}
 	},
 
 	current_state: null,
@@ -43,5 +36,3 @@ var  stateMachine = {
 		stateMachine.current_state(player, cursors)
 	},
 }
-
-console.log(stateMachine);
