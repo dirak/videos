@@ -1,4 +1,7 @@
 digraph finite_state_machine {
+		rankdir=LR;
+		splines=true
+		overlap=scalexy;
     node [shape = circle label = "STANDING" ]; S
 		node [shape = circle label = "FALLING"  ]; F
 		node [shape = circle label = "JUMPING"  ]; J
