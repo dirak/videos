@@ -1,8 +1,4 @@
-var  stateMachine = {
-	/*
-	this state machine has all the seperate pieces,
-	allowing you to attack while jumping and falling
-	*/
+var  badStateMachine = {
 	states: {
 		STANDING: (player, cursors) => {
 			//standing can jump or fall
@@ -38,7 +34,7 @@ var  stateMachine = {
 		ATTACKING: (player, cursors) => {
 			/* do attack stuff */
 			player.tint = 0xff00ff
-			if(stateMachine.attack_timer < 10) stateMachine.attack_timer++
+			if(stateMachine.attack_timer < stateMachine.max_attack_time) stateMachine.attack_timer++
 			else {
 				stateMachine.attack_timer = 0
 				stateMachine.current_state = stateMachine.states.STANDING
@@ -48,6 +44,8 @@ var  stateMachine = {
 
 	current_state: null,
 	attack_timer: 0,
+	max_attack_time: 15,
+	name: "Bad",
 
 	setState : () => {
 		stateMachine.current_state = stateMachine.states.STANDING

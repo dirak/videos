@@ -6,9 +6,15 @@ digraph fsm_jumping {
     node [shape = circle label = "STANDING" ]; S
 		node [shape = circle label = "FALLING"  ]; F
 		node [shape = circle label = "JUMPING"  ]; J
+		node [shape = circle label = "ATTACKING"  ]; A
+		node [shape = circle label = "FALL ATTACKING"  ]; FA
+		node [shape = circle label = "JUMP ATTACKING"  ]; JA
 		S -> J [ label = "Jump key" ]
 		S -> F [ label = "Walk off ledge" ]
 		F -> S [ label = "Hit ground" ]
 		J -> F [ label = "Gravity" ]
 		F -> F
+		J -> JA [ dir = "both" ]
+		F -> FA [ dir = "both" ]
+		S -> A [ dir = "both" ]
 }

@@ -1,4 +1,4 @@
-var  stateMachine = {
+var  primitiveStateMachine = {
 	/*
 	this state machine has all the seperate pieces, but you can't attack while falling
 	*/
@@ -28,6 +28,7 @@ var  stateMachine = {
 	},
 
 	current_state: null,
+	name: "Primitive",
 
 	setState : () => {
 		stateMachine.current_state = stateMachine.states.STANDING

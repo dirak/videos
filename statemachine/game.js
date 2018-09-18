@@ -20,7 +20,8 @@ var game = new Phaser.Game(config);
 var player;
 var cursors;
 var platforms;
-var player_state = 'standing';
+var txt;
+var state;
 
 function preload () {
 	this.load.image('bg', '/../assets/bg.png')
@@ -58,10 +59,25 @@ function create () {
 		down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S),
 		left: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A),
 		right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
-		attack: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W)
+		attack: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
+		good_state: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE),
+		bad_state: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO),
+		primitive_state: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE),
 	};
-
+	stateMachine = primitiveStateMachine
 	stateMachine.setState()
+
+	txt = this.add.text(40, 140, 
+		stateMachine.current_state.name, {
+			fontSize: '32px',
+			fill: '#000'
+		});
+	
+	state = this.add.text(40, 100, 
+		stateMachine.name, {
+			fontSize: '32px',
+			fill: '#000'
+		});
 }
 
 function update () {
@@ -75,6 +91,21 @@ function update () {
 			player.setVelocityX(0);
 	}
 	
+	if(cursors.good_state.isDown) {
+		stateMachine = goodStateMachine
+		stateMachine.setState()
+		state.setText(stateMachine.name)
+	} else if(cursors.bad_state.isDown) {
+		stateMachine = badStateMachine
+		stateMachine.setState()
+		state.setText(stateMachine.name)
+	} else if(cursors.primitive_state.isDown) {
+		stateMachine = primitiveStateMachine
+		stateMachine.setState()
+		state.setText(stateMachine.name)
+	}
+
 	stateMachine.updateState(player, cursors)
+	txt.setText(stateMachine.current_state.name)
 }
 
