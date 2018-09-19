@@ -8,6 +8,8 @@ var  primitiveStateMachine = {
 			if(cursors.up.isDown) {
 				player.setVelocityY(-360)
 				stateMachine.current_state = stateMachine.states.JUMPING
+			} else if(!player.body.touching.down) {
+				stateMachine.current_state = stateMachine.states.FALLING
 			}
 		},
 		FALLING: (player, cursors) => {

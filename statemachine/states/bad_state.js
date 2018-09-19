@@ -45,7 +45,7 @@ var  badStateMachine = {
 	current_state: null,
 	attack_timer: 0,
 	max_attack_time: 15,
-	name: "Bad",
+	name: "Jump & Attack",
 
 	setState : () => {
 		stateMachine.current_state = stateMachine.states.STANDING

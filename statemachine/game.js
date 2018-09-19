@@ -33,7 +33,7 @@ function preload () {
 function create () {
 	this.add.image(0, 0, 'bg').setOrigin(0)
 
-	player = this.physics.add.sprite(400, 450, 'ball')
+	player = this.physics.add.sprite(100, 500, 'ball')
 	//player.setBounce(0.2)
 	player.setCollideWorldBounds(true)
 
@@ -65,7 +65,7 @@ function create () {
 		primitive_state: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE),
 	};
 	stateMachine = primitiveStateMachine
-	stateMachine.setState()
+	setup()
 
 	txt = this.add.text(40, 140, 
 		stateMachine.current_state.name, {
@@ -93,15 +93,15 @@ function update () {
 	
 	if(cursors.good_state.isDown) {
 		stateMachine = goodStateMachine
-		stateMachine.setState()
+		setup()
 		state.setText(stateMachine.name)
 	} else if(cursors.bad_state.isDown) {
 		stateMachine = badStateMachine
-		stateMachine.setState()
+		setup()
 		state.setText(stateMachine.name)
 	} else if(cursors.primitive_state.isDown) {
 		stateMachine = primitiveStateMachine
-		stateMachine.setState()
+		setup()
 		state.setText(stateMachine.name)
 	}
 
@@ -109,3 +109,8 @@ function update () {
 	txt.setText(stateMachine.current_state.name)
 }
 
+function setup() {
+	stateMachine.setState()
+	player.setPosition(700, 500)
+
+}
