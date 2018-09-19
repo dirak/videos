@@ -6,12 +6,12 @@ digraph finite_state_machine {
 		node [shape = circle label = "FALLING"  ]; F
 		node [shape = circle label = "JUMPING"  ]; J
 		node [shape = circle label = "ATTACKING"  ]; A
-		S -> J [ label = "Jump key" ]
-		S -> F [ label = "Walk off ledge" ]
+		S -> J [ label = "Jump key" color="red"]
+		S -> F [ label = "In the air" ]
 		F -> S [ label = "Hit ground" ]
 		J -> F [ label = "Gravity" ]
 		F -> F
-		S -> A [ dir = "both" ]
+		S -> A [ dir = "both" color="red"]
 		F -> A
-		J -> A 
+		J -> A [ color="red"] 
 }

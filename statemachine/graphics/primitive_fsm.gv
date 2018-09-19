@@ -7,7 +7,7 @@ digraph finite_state_machine {
 		node [shape = circle label = "FALLING"  ]; F
 		node [shape = circle label = "JUMPING"  ]; J
 		S -> J [ label = "Jump key" ]
-		S -> F [ label = "Walk off ledge" ]
+		S -> F [ label = "In the air" ]
 		F -> S [ label = "Hit ground" ]
 		J -> F [ label = "Gravity" ]
 		F -> F
